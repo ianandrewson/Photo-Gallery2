@@ -4,23 +4,31 @@ import Header from '../home/Header.js';
 import ImageList from './ImageList.js';
 
 class App extends Component {
-    onRender() {
+    onRender(dom) {
         let props = {
             images: images
         };
 
         const header = new Header();
         const headerDom = header.renderDOM();
-        //dom.prepend(headerDom);
+        dom.prepend(headerDom);
 
         let imageList = new ImageList(props);
         const imageListDom = imageList.renderDOM();
-        //document.getElementById('display-area').appendChild(imageListDom);
+        console.log(dom);
+        let displayArea = dom.querySelector('#card-section');
+        displayArea.appendChild(imageListDom);
 
     }
 
     renderHTML(){
-        let html = '';
+        let html = /*html*/`
+            <main>
+                <div id="filter-bar">
+                </div>
+                <div id="card-section">
+                </div>
+            </main>`;
         return html;
     }
 }

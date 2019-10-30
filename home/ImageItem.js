@@ -3,7 +3,6 @@ import Component from '../Component.js';
 class ImageItem extends Component {
     renderHTML(){
         const animal = this.props.animal;
-        console.log(animal);
 
         return /*html*/`
             <article class="card ${animal.keyword}">
