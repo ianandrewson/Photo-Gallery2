@@ -1,7 +1,8 @@
 import images from '../data/images.js';
 import Component from '../Component.js';
-import Header from '../home/Header.js';
+import Header from './Header.js';
 import ImageList from './ImageList.js';
+import FilterImage from './FilterImages.js';
 
 class App extends Component {
     onRender(dom) {
@@ -17,6 +18,30 @@ class App extends Component {
         const imageListDom = imageList.renderDOM();
         let displayArea = dom.querySelector('#card-section');
         displayArea.appendChild(imageListDom);
+
+        const filterImageProps = {
+            images: images,
+
+            onFilter: (filterSelector) => {
+                let filteredImages;
+                if (filterSelector === 'all'){
+                    filteredImages = images;
+                } else {
+                    filteredImages = images.filter(image => {
+                        return image.keyword === filterSelector;
+                    });
+                }
+                let updatedImageList = { images: filteredImages };
+                imageList.update(updatedImageList);
+            }
+        };
+
+        let filterBar = new FilterImage(filterImageProps);
+        const filterBarDom = filterBar.renderDOM();
+        let filterRenderArea = dom.querySelector('#filter-bar');
+        filterRenderArea.appendChild(filterBarDom);
+
+        
 
     }
 
