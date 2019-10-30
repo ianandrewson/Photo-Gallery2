@@ -15,7 +15,6 @@ class App extends Component {
 
         let imageList = new ImageList(props);
         const imageListDom = imageList.renderDOM();
-        console.log(dom);
         let displayArea = dom.querySelector('#card-section');
         displayArea.appendChild(imageListDom);
 
