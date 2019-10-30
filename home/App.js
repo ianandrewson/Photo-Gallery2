@@ -4,18 +4,18 @@ import Header from '../home/Header.js';
 import ImageList from './ImageList.js';
 
 class App extends Component {
-    onRender(dom) {
+    onRender() {
         let props = {
             images: images
         };
 
         const header = new Header();
         const headerDom = header.renderDOM();
-        dom.prepend(headerDom);
+        //dom.prepend(headerDom);
 
         let imageList = new ImageList(props);
         const imageListDom = imageList.renderDOM();
-        document.getElementById('display-area').appendChild(imageListDom);
+        //document.getElementById('display-area').appendChild(imageListDom);
 
     }
 
